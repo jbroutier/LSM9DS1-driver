@@ -31,7 +31,6 @@ public:
     std::tuple<double, double, double> getAngularRate();
     std::tuple<double, double, double> getLinearAcceleration();
     std::tuple<double, double, double> getMagneticField();
-
     double getTemperature();
 
     void setAccelerometerDataRate(LSM9DS1AccelerometerDataRate_t dataRate);
