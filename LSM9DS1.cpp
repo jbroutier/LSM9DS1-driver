@@ -95,17 +95,29 @@ std::tuple<double, double, double> LSM9DS1::getAngularRate()
     data = i2c_smbus_read_byte_data(accelerometerGyroscopeDevice, LSM9DS1_REGISTER_OUT_X_G_H);
     x |= data << 8;
 
+    if (x > 32768) {
+        x -= 65536;
+    }
+
     data = i2c_smbus_read_byte_data(accelerometerGyroscopeDevice, LSM9DS1_REGISTER_OUT_Y_G_L);
     y = data;
 
     data = i2c_smbus_read_byte_data(accelerometerGyroscopeDevice, LSM9DS1_REGISTER_OUT_Y_G_H);
     y |= data << 8;
 
+    if (y > 32768) {
+        y -= 65536;
+    }
+
     data = i2c_smbus_read_byte_data(accelerometerGyroscopeDevice, LSM9DS1_REGISTER_OUT_Z_G_L);
     z = data;
 
     data = i2c_smbus_read_byte_data(accelerometerGyroscopeDevice, LSM9DS1_REGISTER_OUT_Z_G_H);
     z |= data << 8;
+
+    if (z > 32768) {
+        z -= 65536;
+    }
 
     data = i2c_smbus_read_byte_data(accelerometerGyroscopeDevice, LSM9DS1_REGISTER_CTRL_REG1_G);
 
@@ -128,7 +140,7 @@ std::tuple<double, double, double> LSM9DS1::getAngularRate()
         break;
     }
 
-    return std::make_tuple((int16_t)x * scale, (int16_t)y * scale, (int16_t)z * scale);
+    return std::make_tuple(x * scale, y * scale, z * scale);
 }
 
 std::tuple<double, double, double> LSM9DS1::getLinearAcceleration()
@@ -141,17 +153,29 @@ std::tuple<double, double, double> LSM9DS1::getLinearAcceleration()
     data = i2c_smbus_read_byte_data(accelerometerGyroscopeDevice, LSM9DS1_REGISTER_OUT_X_XL_H);
     x |= data << 8;
 
+    if (x > 32768) {
+        x -= 65536;
+    }
+
     data = i2c_smbus_read_byte_data(accelerometerGyroscopeDevice, LSM9DS1_REGISTER_OUT_Y_XL_L);
     y = data;
 
     data = i2c_smbus_read_byte_data(accelerometerGyroscopeDevice, LSM9DS1_REGISTER_OUT_Y_XL_H);
     y |= data << 8;
 
+    if (y > 32768) {
+        y -= 65536;
+    }
+
     data = i2c_smbus_read_byte_data(accelerometerGyroscopeDevice, LSM9DS1_REGISTER_OUT_Z_XL_L);
     z = data;
 
     data = i2c_smbus_read_byte_data(accelerometerGyroscopeDevice, LSM9DS1_REGISTER_OUT_Z_XL_H);
     z |= data << 8;
+
+    if (z > 32768) {
+        z -= 65536;
+    }
 
     data = i2c_smbus_read_byte_data(accelerometerGyroscopeDevice, LSM9DS1_REGISTER_CTRL_REG6_XL);
 
@@ -178,7 +202,7 @@ std::tuple<double, double, double> LSM9DS1::getLinearAcceleration()
         break;
     }
 
-    return std::make_tuple((int16_t)x * scale, (int16_t)y * scale, (int16_t)z * scale);
+    return std::make_tuple(x * scale, y * scale, z * scale);
 }
 
 std::tuple<double, double, double> LSM9DS1::getMagneticField()
@@ -191,17 +215,29 @@ std::tuple<double, double, double> LSM9DS1::getMagneticField()
     data = i2c_smbus_read_byte_data(magnetometerDevice, LSM9DS1_REGISTER_OUT_X_H_M);
     x |= data << 8;
 
+    if (x > 32768) {
+        x -= 65536;
+    }
+
     data = i2c_smbus_read_byte_data(magnetometerDevice, LSM9DS1_REGISTER_OUT_Y_L_M);
     y = data;
 
     data = i2c_smbus_read_byte_data(magnetometerDevice, LSM9DS1_REGISTER_OUT_Y_H_M);
     y |= data << 8;
 
+    if (y > 32768) {
+        y -= 65536;
+    }
+
     data = i2c_smbus_read_byte_data(magnetometerDevice, LSM9DS1_REGISTER_OUT_Z_L_M);
     z = data;
 
     data = i2c_smbus_read_byte_data(magnetometerDevice, LSM9DS1_REGISTER_OUT_Z_H_M);
     z |= data << 8;
+
+    if (z > 32768) {
+        z -= 65536;
+    }
 
     data = i2c_smbus_read_byte_data(magnetometerDevice, LSM9DS1_REGISTER_CTRL_REG2_M);
 
@@ -228,7 +264,7 @@ std::tuple<double, double, double> LSM9DS1::getMagneticField()
         break;
     }
 
-    return std::make_tuple((int16_t)x * scale, (int16_t)y * scale, (int16_t)z * scale);
+    return std::make_tuple(x * scale, y * scale, z * scale);
 }
 
 double LSM9DS1::getTemperature()
@@ -241,7 +277,11 @@ double LSM9DS1::getTemperature()
     data = i2c_smbus_read_byte_data(accelerometerGyroscopeDevice, LSM9DS1_REGISTER_OUT_TEMP_H);
     temperature |= data << 8;
 
-    return 25.0 + ((int16_t)temperature / 16.0);
+    if (temperature > 32768) {
+        temperature -= 65536;
+    }
+
+    return 25.0 + (temperature / 16.0);
 }
 
 void LSM9DS1::setAccelerometerDataRate(LSM9DS1AccelerometerDataRate_t dataRate)
