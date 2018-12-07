@@ -41,7 +41,7 @@ int main(int argc, char** argv)
 
 ## Documentation
 
-#### `LSM9DS1::LSM9DS1(const char* devicePath, uint8_t accelerometerGyroscopeDeviceAddress = LSM9DS1_ACCELEROMETER_GYROSCOPE_DEVICE_ADDRESS, uint8_t magnetometerDeviceAddress = LSM9DS1_MAGNETOMETER_DEVICE_ADDRESS)` 
+### `LSM9DS1::LSM9DS1(const char* devicePath, uint8_t accelerometerGyroscopeDeviceAddress = LSM9DS1_ACCELEROMETER_GYROSCOPE_DEVICE_ADDRESS, uint8_t magnetometerDeviceAddress = LSM9DS1_MAGNETOMETER_DEVICE_ADDRESS)` 
 ---
 Creates a LSM9DS1 object.
 
@@ -62,27 +62,27 @@ Upon creation of the object, the module is configured with the following options
 
 Throws an `std::runtime_error` exception if the communication with the module fails for any reason.
 
-#### `LSM9DS1::~LSM9DS1()`
+### `LSM9DS1::~LSM9DS1()`
 ___
 Destroys the object, closing the connection to the module.
 
-#### `std::tuple<double x, double y, double z> LSM9DS1::getAngularRate()`
+### `std::tuple<double x, double y, double z> LSM9DS1::getAngularRate()`
 ___
 Returns the angular rate value measured by the module, in degrees per second.
 
-#### `std::tuple<double x, double y, double z> LSM9DS1::getLinearAcceleration()`
+### `std::tuple<double x, double y, double z> LSM9DS1::getLinearAcceleration()`
 ___
 Returns the linear acceleration value measured by the module, in multiples of the gravitational constant.
 
-#### `std::tuple<double x, double y, double z> LSM9DS1::getMagneticField()`
+### `std::tuple<double x, double y, double z> LSM9DS1::getMagneticField()`
 ___
 Returns the magnetic field value measured by the module, in gauss.
 
-#### `double LSM9DS1::getTemperature()`
+### `double LSM9DS1::getTemperature()`
 ___
 Returns the temperature value measured by the module, in Celsius degrees.
 
-#### `void LSM9DS1::setAccelerometerDataRate(LSM9DS1AccelerometerDataRate_t dataRate)`
+### `void LSM9DS1::setAccelerometerDataRate(LSM9DS1AccelerometerDataRate_t dataRate)`
 ___
 Sets the data rate of the accelerometer part of the module.
 
@@ -98,7 +98,7 @@ The *dataRate* parameter can take one of the following values:
 |LSM9DS1_ACCELEROMETER_DATA_RATE_476HZ|2.1 ms|
 |LSM9DS1_ACCELEROMETER_DATA_RATE_952HZ|1.05 ms|
 
-#### `void LSM9DS1::setAccelerometerScale(LSM9DS1AccelerometerScale_t scale)`
+### `void LSM9DS1::setAccelerometerScale(LSM9DS1AccelerometerScale_t scale)`
 ___
 Sets the scale of the accelerometer part of the module.
 
@@ -111,7 +111,7 @@ The *scale* parameter can take one of the following values:
 |LSM9DS1_ACCELEROMETER_SCALE_8G|2.44 x 10e-5 G|
 |LSM9DS1_ACCELEROMETER_SCALE_16G|4.88 x 10e-5 G|
 
-#### `void LSM9DS1::setGyroscopeDataRate(LSM9DS1GyroscopeDataRate_t dataRate)`
+### `void LSM9DS1::setGyroscopeDataRate(LSM9DS1GyroscopeDataRate_t dataRate)`
 ___
 Sets the data rate of the gyroscope part of the module.
 
@@ -127,7 +127,7 @@ The *dataRate* parameter can take one of the following values:
 |LSM9DS1_GYROSCOPE_DATA_RATE_476_HZ|2.1 ms|
 |LSM9DS1_GYROSCOPE_DATA_RATE_952_HZ|1.05 ms|
 
-#### `void LSM9DS1::setGyroscopeScale(LSM9DS1GyroscopeScale_t scale)`
+### `void LSM9DS1::setGyroscopeScale(LSM9DS1GyroscopeScale_t scale)`
 ___
 Sets the scale of the gyroscope part of the module.
 
@@ -139,7 +139,7 @@ The *scale* parameter can take one of the following values:
 |LSM9DS1_GYROSCOPE_SCALE_500_DPS|1.52 x 10e-3 deg.s-1|
 |LSM9DS1_GYROSCOPE_SCALE_2000_DPS|6.1 x 10e-3 deg.s-1|
 
-#### `void LSM9DS1::setMagnetometerDataRate(LSM9DS1MagnetometerDataRate_t dataRate)`
+### `void LSM9DS1::setMagnetometerDataRate(LSM9DS1MagnetometerDataRate_t dataRate)`
 ___
 Sets the data rate of the magnetometer part of the module.
 
@@ -156,8 +156,7 @@ The *dataRate* parameter can take one of the following values:
 |LSM9DS1_MAGNETOMETER_DATA_RATE_40_HZ|25 ms|
 |LSM9DS1_MAGNETOMETER_DATA_RATE_80_HZ|12.5ms|
 
-
-#### `void LSM9DS1::setMagnetometerPerformanceMode(LSM9DS1MagnetometerPerformanceMode_t performanceMode)`
+### `void LSM9DS1::setMagnetometerPerformanceMode(LSM9DS1MagnetometerPerformanceMode_t performanceMode)`
 ___
 Sets the performance mode of the magnetometer part of the module.
 
@@ -170,7 +169,7 @@ The *performanceMode* parameter can take one of the following values:
 |LSM9DS1_MAGNETOMETER_PERFORMANCE_MODE_HIGH_PERFORMANCE|
 |LSM9DS1_MAGNETOMETER_PERFORMANCE_MODE_ULTRA_HIGH_PERFORMANCE|
 
-#### `void LSM9DS1::setMagnetometerScale(LSM9DS1MagnetometerScale_t scale)`
+### `void LSM9DS1::setMagnetometerScale(LSM9DS1MagnetometerScale_t scale)`
 ___
 Sets the scale of the magnetometer part of the module.
 
