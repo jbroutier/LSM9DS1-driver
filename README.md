@@ -60,7 +60,7 @@ Upon creation of the object, the module is configured with the following options
 |Magnetometer data rate|LSM9DS1_MAGNETOMETER_DATA_RATE_1_25_HZ|
 |Magnetometer scale|LSM9DS1_MAGNETOMETER_SCALE_4G|
 
-Throws an `std::runtime_error` exception if the communication with the sensor fails for any reason.
+Throws an `std::runtime_error` exception if the communication with the module fails for any reason.
 
 #### `LSM9DS1::~LSM9DS1()`
 ___
