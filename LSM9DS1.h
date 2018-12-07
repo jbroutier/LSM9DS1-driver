@@ -40,7 +40,6 @@ public:
     void setMagnetometerDataRate(LSM9DS1MagnetometerDataRate_t dataRate);
     void setMagnetometerPerformanceMode(LSM9DS1MagnetometerPerformanceMode_t performanceMode);
     void setMagnetometerScale(LSM9DS1MagnetometerScale_t scale);
-    void setMagnetometerTemperatureCompensation(LSM9DS1MagnetometerTemperatureCompensation_t temperatureCompensation);
 
 private:
     int accelerometerGyroscopeDevice, magnetometerDevice;

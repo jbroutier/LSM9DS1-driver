@@ -354,16 +354,6 @@ void LSM9DS1::setMagnetometerScale(LSM9DS1MagnetometerScale_t scale)
     i2c_smbus_write_byte_data(magnetometerDevice, LSM9DS1_REGISTER_CTRL_REG2_M, (uint8_t)data);
 }
 
-void LSM9DS1::setMagnetometerTemperatureCompensation(LSM9DS1MagnetometerTemperatureCompensation_t temperatureCompensation)
-{
-    int32_t data = i2c_smbus_read_byte_data(magnetometerDevice, LSM9DS1_REGISTER_CTRL_REG2_M);
-
-    data &= ~(0b1 << 7);
-    data |= temperatureCompensation;
-
-    i2c_smbus_write_byte_data(magnetometerDevice, LSM9DS1_REGISTER_CTRL_REG2_M, (uint8_t)data);
-}
-
 LSM9DS1::~LSM9DS1()
 {
     close(accelerometerGyroscopeDevice);
